@@ -87,21 +87,21 @@ def plot_world_map(countries):
 
     m.save("files/map.html")
 
-
 def make_worldmap():
     """Función principal"""
 
-    if not os.path.exists("files"):
-        os.makedirs("files")
+    if not os.path.exists("files/output"):
+        os.makedirs("files/output")
 
     affiliations = load_affiliations()
     affiliations = remove_na_rows(affiliations)
     affiliations = add_countries_column(affiliations)
     affiliations = clean_countries(affiliations)
     countries = count_country_frequency(affiliations)
-    countries.to_csv("files/countries.csv")
+    countries.to_csv("files/output/countries.csv")
     plot_world_map(countries)
 
 
 if __name__ == "__main__":
     make_worldmap()
+    
